@@ -1,0 +1,51 @@
+body {
+    background: rgb(42, 99, 153);
+}
+
+#gamediv {
+    display: grid;
+    height: 60vh;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    justify-content: center;
+    align-content: center;
+    grid-gap: 10px;
+    padding-bottom: 4em;
+}
+
+#gamediv div {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+.elementmousehover {
+    background-color: orange;
+
+}
+
+.wonGame {
+    opacity: .4;
+    background-color: black;
+
+}
+
+.won {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+#resetgame {
+    background-color: aqua;
+    font-weight: bold;
+    height: 3em;
+    width: 8em;
+
+}
