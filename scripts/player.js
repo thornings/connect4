@@ -1,14 +1,14 @@
 export default class Player {
     name = "";
-    color = "black";
+    color = "player-one";
     
     constructor(name, color, sign) {
         this.name = name;
         this.color = color;
-        this.sign = name[0];
+        this.sign = sign;
     }
 
-    Color() {
-        return this.color;
-    }
+    // Color() {
+    //     return this.color;
+    // }
 }

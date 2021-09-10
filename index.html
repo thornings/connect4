@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Fire på stribe</title>
+    <title>Thornings Connect4</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -17,18 +17,36 @@
 
 <body>
 
-    <div class="container bg-white text-center">
+    <div class="container text-center text-white">
        
-        <h1 class="mb-5 mt-5 pt-5">Fire På stribe battle</h1>
+        <h1>Connect4 Game</h1>
 
-        <div>
+        <noscript>
+            <style type="text/css">
+                .connectfour {display:none;}
+                .noscriptmsg { color: orangered; }
+            </style>
+            <div class="noscriptmsg">
+                <h3>This browser don't have javascript enabled!</h3>
+                <h3>Please enable javascript to play Connect4</h3>
+            </div>
+        </noscript>
+
+        <div class="connectfour">
+          
+            <h5 id="players" style="display:none;" class="pt-3"><span id="playerone">Player 1</span> VS <span id="playertwo">Player 2</span></h5>
+            <h4 id="messages" class="pt-3"> 
+                
+            </h4>
+
+            <div>               
+                <input id="startgame" type="submit" name="start"  value="Play Game" />
+            </div>
+
+            <div id="gamediv">        
+            </div>
+
             <input id="resetgame" type="submit" style="display: none" name="reset"  value="Reset Game" />
-            <input id="startgame" type="submit" name="start"  value="Start Game" />
-        </div>
-
-        <h4 id="messages" class="pt-3 text-danger"></h4>
-        <h5 id="players" style="display:none;" class="pt-3 text-danger"><span id="playerone">Player 1</span> VS <span id="playertwo">Player 2</span></h5>
-        <div id="gamediv">´            
         </div>
     </div>
 

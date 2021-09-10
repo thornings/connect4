@@ -1,16 +1,29 @@
+:root {
+    --frame: rgb(31, 18, 104);
+    --page-background: rgb(42, 99, 153);
+    --cell-hover: rgb(110, 104, 139);
+    --player-one-color: rgb(177, 177, 177);
+    --player-two-color: red;
+    --light: rgb(61, 61, 61);
+    --lighter: rgb(216, 216, 216);
+}
+
 body {
-    background: rgb(42, 99, 153);
+    background: var(--page-background);
 }
 
 #gamediv {
     display: grid;
     height: 60vh;
+    height: 60vw;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(6, 1fr);
     justify-content: center;
     align-content: center;
     grid-gap: 10px;
-    padding-bottom: 4em;
+    margin-bottom: 4em;
+    background-color: var(--frame);
+    margin-top: 1rem;
 }
 
 #gamediv div {
@@ -20,16 +33,21 @@ body {
     align-items: center;
     font-size: 3em;
     font-weight: bolder;
+    border-radius: 50%;
+}
+
+h1 {
+    margin-top: 2rem;
 }
 
 .elementmousehover {
-    background-color: orange;
-
+    background-color: var(--cell-hover) !important
 }
 
 .wonGame {
     opacity: .4;
     background-color: black;
+    color: var(--light);
 
 }
 
@@ -40,12 +58,42 @@ body {
     height: 100%;
     width: 100%;
     background-color: black;
+    color: var(--light);
 }
 
 #resetgame {
-    background-color: aqua;
+    background-color: var(--frame);
+    border: solid 1px var(--lighter);
+    color: var(--lighter);
     font-weight: bold;
     height: 3em;
     width: 8em;
+    border-radius: 2em;
+    margin-bottom: 3rem;
+}
 
+.cell-color {}
+
+.cell {
+    /* background-color: var(--lighter); */
+    margin: 10%;
+    background-color: var(--page-background);
+}
+
+.cell-hover {
+    background-color: green;
+}
+
+
+.player-one {
+    background-color: var(--player-one-color) !important;
+}
+
+.player-two {
+    background-color: var(--player-two-color) !important;
+}
+
+#messages,
+#players {
+    color: bisque;
 }

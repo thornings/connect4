@@ -7,6 +7,7 @@ export default class Game {
     board = null
     player1 = null
     player2 = null
+    players =  []
     won = false
     gamediv = null
 
@@ -39,17 +40,18 @@ export default class Game {
         this.playerTwoMessageSpan = document.getElementById(playerTwoMessageSpan)
         this.messageDiv = document.getElementById(messageDiv)
 
-        console.log('test',  this.resetBtn);
         this.events();
 
     }
 
     initializeNewGame(
-        player1 = 'player1', 
-        player2  = 'player2', 
+        player1 = 'player 1', 
+        player2  = 'player 2', 
       ) {
-        this.player1 = new Player(player1, "black");
-        this.player2 = new Player(player2, "white");
+        this.player1 = new Player(player1, "player-one", "p1");
+        this.player2 = new Player(player2, "player-two", "p2");
+        this.players.push(this.player1)
+        this.players.push(this.player2)
 
         this.playersDiv.style.display = 'block';
         this.playerOneMessageSpan.innerHTML = player1;
@@ -58,7 +60,7 @@ export default class Game {
         this.randomizePlayerTurn();
         this.showMessage(this.currentPlayer.name + Game.MAKE_YOUR_MOVE);
 
-        this.board = new Board(7, 6, this);
+        this.board = new Board(6, 6, this);
       
     }
 
@@ -104,17 +106,14 @@ export default class Game {
         this.resetBtn.addEventListener('click', () => 
         {
             this.startNewGame()
-            this.endGame('inline', 'none')
+            this.endGame('none', 'none')
         })
 
     }
 
     startNewGame() {
     
-        this.initializeNewGame(
-            'Brian', 
-            'Tine'        
-        )
+        this.initializeNewGame()
        
         this.endGame('none', 'inline')
         this.startGame()

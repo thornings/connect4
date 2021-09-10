@@ -2,7 +2,7 @@ export default class Board {
     game = null;
     cells = []; 
     
-    constructor(width=7, height=6, game) {
+    constructor(width=10, height=4, game) {
         this.width = width;
         this.height = height;
         this.game = game;
@@ -10,6 +10,9 @@ export default class Board {
     }
 
     initializeBoard() {
+        this.game.gameDiv.style.gridTemplateColumns = "repeat(" + this.width + ", 1fr)"
+        this.game.gameDiv.style.gridTemplateRows = "repeat(" + this.height + ", 1fr)"
+
         for (let r = 0; r < this.height; r++) {
             let row = [];
             for (let c = 0; c < this.width; c++) {
@@ -28,12 +31,28 @@ export default class Board {
             for (let c = 0; c < this.width; c++) {
 
                 let div = document.createElement("div");
-                div.setAttribute("class", "item, bg-info");
+                
+                let cellbackground = '' 
+                const cellContent = rem.cells[r][c];
+                if(rem.cells[r][c]!=null) {
+                   
+                    rem.game.players.forEach(player => {
+                        if(cellContent==player.sign)
+                        {
+                            cellbackground = player.color
+                        } 
+        
+                    });
+
+                }
+
+                div.setAttribute("class", "item cell " + cellbackground);
                 div.id = c + (r * this.height);
                 div.dataset.column = c;
                 div.dataset.row = r;
+                
                 if(rem.cells[r][c]!=null) {
-                    div.innerHTML = rem.cells[r][c];                    
+                    div.innerHTML = rem.cells[r][c];
                 }
                
                 div.addEventListener("click", function() {
@@ -73,14 +92,14 @@ export default class Board {
                     if(allElements.length>0) {
                         allElements.forEach(element => {
                             element.classList.remove('elementmousehover');
-                            element.classList.add('bg-info');
+                            // element.classList.add('cell-hover');
                         });
                     }
                         
                     // add only on this column
                     let cols = document.querySelectorAll("[data-column='" + currentCol + "']");
                     cols.forEach(element => {
-                        element.classList.remove('bg-info');
+                        // element.classList.remove('cell-hover');
                         element.classList.add('elementmousehover');
                     });
                     
@@ -195,12 +214,11 @@ export default class Board {
         return null;
     }
 
-    addToBoard(col, currentPlayer) {
-        let vacantRow = this.getVacantRowInColumn(col)
-        console.log("spiller ", currentPlayer);
+    addToBoard(column, currentPlayer) {
+        let vacantRow = this.getVacantRowInColumn(column)
+        //console.log("spiller ", currentPlayer);
         if(vacantRow != null) {
-            this.cells[vacantRow][col] = currentPlayer;
-            // this.showBoard(this.gameDiv, this.game);
+            this.cells[vacantRow][column] = currentPlayer;          
             return true;
         } else {
             return false;
